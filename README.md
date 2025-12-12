@@ -1,35 +1,11 @@
 # *CaLenDiR*-PPM
 
-Welcome to the official repository containing the entire source code for the ***CaLenDiR PPM framework***, proposed in the paper **CaLenDiR: Mitigating Case-Length Distortion in Deep-Learning-Based Predictive Process Monitoring**, submitted to the [ML4PM](https://ml4pm.di.unimi.it/) workshop, part of the [ICPM 2024](https://icpmconference.org/2024/) conference. This framework is specifically designed to mitigate case-length distortion in Deep Learning-based Predictive Process Monitoring (PPM), both during training and evaluation. The **CaLenDiR training** procedure consists of **Uniform Case-Based Sampling (UCBS)**, and in the case of suffix prediction, it additionally incorporates **Suffix-Length-Normalized Loss Functions**. For evaluation, the framework employs **Case-Based Metrics** to accurately reflect the model's performance across the true distribution of case lengths.
+Welcome to the official repository containing the entire source code for the ***CaLenDiR PPM framework***, proposed in the paper [**CaLenDiR: Mitigating Case-Length Distortion in Deep-Learning-Based Predictive Process Monitoring**](https://doi.org/10.1007/978-3-031-82225-4_19) [[1]](#references), presented at the [ML4PM](https://ml4pm.di.unimi.it/) workshop, part of the [ICPM 2024](https://icpmconference.org/2024/) conference. This framework is specifically designed to mitigate case-length distortion in Deep Learning-based Predictive Process Monitoring (PPM), both during training and evaluation. The **CaLenDiR training** procedure consists of **Uniform Case-Based Sampling (UCBS)**, and in the case of suffix prediction, it additionally incorporates **Suffix-Length-Normalized Loss Functions**. For evaluation, the framework employs **Case-Based Metrics** to accurately reflect the model's performance across the true distribution of case lengths.
 
-As mentioned in the paper, the experimental setup extends on the setup from our previous paper, ***SuTraN: an Encoder-Decoder Transformer for FullContext-Aware Suffix Prediction of Business Processes***, accepted at the **ICPM 2024 main track**. The corresponding meticulously documented repository, [SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) , including all reimplementations, is made available [here](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main). 
-
-___
-> __Awaiting publication, a preprint of that paper is provided at the root of this repository (`SuTraN_preprint.pdf`).__
-
-_**© 2024 IEEE**. Personal use of this material is permitted. Permission
-from IEEE must be obtained for all other uses, in any current or future
-media, including reprinting/republishing this material for advertising or
-promotional purposes, creating new collective works, for resale or
-redistribution to servers or lists, or reuse of any copyrighted
-component of this work in other works._
-___
+As mentioned in the paper, the experimental setup extends on the setup from our previous paper, [***SuTraN: an Encoder-Decoder Transformer for FullContext-Aware Suffix Prediction of Business Processes***](https://doi.org/10.1109/ICPM63005.2024.10680671) [[2]](#references).
+The corresponding meticulously documented repository, [SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) , including all reimplementations, is made available [here](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main). 
 
 This repository is built on top of that foundation, adding and extending functionality to support the **CaLenDiR** framework. Accordingly, given the high similarity with- and the extensive project description of- the [SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) repository, this README focuses primarily on the new functionality introduced for **CaLenDiR** training, including additional modules and enhancements made to existing code to incorporate and enable **CaLenDiR training and evaluation** across all implementations used in the experimental setup. For detailed explanations on components that remain (largely) unchanged, users are referred to the [SuTraN](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) repository.
-
-
-<!-- This repository further extends the Accordingly, the code base contained within this repository is highly similar to the [SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) repository,  -->
-<!-- This repository also comprises an extensive project description, further detailling all implementations, as well as providing clear instructions on how to get started with the code.  -->
-
-<!-- Accordingly, 
-
-
-The **CaLenDiR-PPM** repository extends the experimental setup presented in our previous work on **SuTraN** by introducing the **CaLenDiR PPM framework**. This framework is specifically designed to mitigate case-length distortion in Deep Learning-based Predictive Process Monitoring (PPM). 
-As described in the paper, **CaLenDiR training** introduces a comprehensive framework to address case-length distortion. This framework primarily consists of **Uniform Case-Based Sampling (UCBS)** to prevent distortion during training by ensuring balanced contributions from all cases. Specifically for the task of suffix prediction, it further incorporates **Suffix-Length-Normalized Loss Functions** to mitigate additional distortions caused by varying case lengths. For evaluation, the framework employs **Case-Based Metrics** to accurately reflect the model's performance across the true distribution of case lengths.
-
-Given the extensive documentation and the comprehensive codebase already available in the **SuTraN** repository ([SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main)), this README focuses primarily on the new functionality introduced for CaLenDiR training. For detailed explanations on components shared between CaLenDiR and SuTraN, such as the general architecture, training, and evaluation procedures, we refer users to the SuTraN repository.
-
-Given the extensive documentation and comprehensive codebase already available in the **SuTraN** repository ([SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main)), this repository is built on top of that foundation, adding and extending functionality to support the **CaLenDiR** framework. This README focuses primarily on the new functionality introduced for CaLenDiR training, including additional modules and enhancements made to existing code to incorporate and enable CaLenDiR training and evaluation across all implementations used in the experimental setup. For detailed explanations on components that remain unchanged, such as the general architecture of the SuTraN network, training procedures, and standard evaluation methods, users are referred to the SuTraN repository. -->
 
 
 ### Key Extensions in CaLenDiR
@@ -42,7 +18,6 @@ Given the extensive documentation and comprehensive codebase already available i
 
 2. **Utils Subpackage**:
    - To maintain consistency and minimize code duplication, all non-normalized sequential loss functions previously scattered across the various subpackages pertaining to the different implementations, have been centralized into this subpackage. 
-   <!-- This structure mirrors the organization used for CaLenDiR's normalized loss functions. -->
 
 3. **Extended Training and Inference Modules**:
    - The training and inference procedures for various models (e.g., CRTP_LSTM, SuTraN, OneStepAheadBenchmarks, and LSTM_seq2seq) have been extended to support both standard and CaLenDiR training. These enhancements ensure seamless integration of the new techniques without disrupting the existing functionalities. The necessary adjustments are clearly documented within the docstrings of the training and inference functions, as well as in comment lines within the code base itself. 
@@ -50,27 +25,6 @@ Given the extensive documentation and comprehensive codebase already available i
 4. **Data Preprocessing Extensions**:
    - To support UCBS during training, the data preprocessing pipeline has been extended to include the creation of three additional tensors. These tensors store the original case IDs, which are crucial for accurate case-based sampling and evaluation. Please refer to the comprehensive docstrings of the data generating functions contained within the `Preprocessing` package. 
 
-<!-- ___
-Adjust this, mention the preprint here. Arvix. 
-A preprint of the accepted ***SuTraN*** paper, will also be communicated at the same day of the release of the ***CaLenDiR-PPM*** repository (*Wednesday 28/08/2024*). 
-___ -->
-
-
-<!-- ___
-### Under construction...
-___
-This repository is set to contain the entire source code for the ***CaLenDiR PPM framework***, proposed in the paper **CaLenDiR: Mitigating Case-Length Distortion in Deep-Learning-Based Predictive Process Monitoring**, submitted to the [ML4PM](https://ml4pm.di.unimi.it/) workshop, part of the [ICPM 2024](https://icpmconference.org/2024/) conference. 
-
-At the moment, to support the integration of the ***CaLenDiR*** framework into other research projects and contribute to the advancement of the PPM field, the authors are finetuning the documentation of the code, as well as the detailled project description (README) containing supplementary materials and detailed instructions on how to leverage the ***CaLenDir*** framework for Deep-Learning-based Predictive Process Monitoring. 
-
-> The complete repository, including extensive documentation and further instructions, is set to be released on **Wednesday 28/08/2024**. 
-
-As mentioned in the paper, the experimental setup extends on the setup from our previous paper, ***SuTraN: an Encoder-Decoder Transformer for FullContext-Aware Suffix Prediction of Business Processes***, accepted at the **ICPM 2024 main track**. The meticulously documented repository, [SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) , including all reimplementations, is already made available [here](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main). This repository also comprises an extensive project description, further detailling all implementations, as well as providing clear instructions on how to get started with the code. A preprint of the accepted ***SuTraN*** paper, will also be communicated at the same day of the release of the ***CaLenDiR-PPM*** repository (*Wednesday 28/08/2024*).  -->
-
-
-<!-- ### 1. **CaLenDiR_Utils Subpackage**
-
-The training functionality  -->
 
 ### Reproducing the Experiments & Getting Started 
 The [Reproducing the Experiments section](https://github.com/BrechtWts/SuffixTransformerNetwork#reproducing-the-experiments) of the [SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) repository provided detailled instructions on how to reproduce the experimental setup, for all implementations, of the corresponding paper. In particular, a dedicated end-to-end function called `train_eval()` is created for each model included in the experimental setup. The table underneath lists the different implementations, together with the corresponding modules containing the `train_eval()` for the six different suffix prediction networks. 
@@ -107,13 +61,8 @@ ___
 ___
 
 
-<!-- The experiments pertaining to the **CaLenDiR** paper can be reproduced in an highly similar manner. The sole exception is that the `train_eval()` functions for each model require an additional boolean parameter `clen_dis_ref` as input. When set to `True`, 
-Reproducing the experiments for all implementations can be done in a way almost identical  -->
 
-<!-- ### Getting started -->
+## References
+[1] Wuyts, B., Vanden Broucke, S., & De Weerdt, J. (2025). CaLenDiR: Mitigating Case-Length Distortion in Deep-Learning-Based Predictive Process Monitoring. In Delgado, A., & Slaats, T. (Eds.), *Process Mining Workshops*, ICPM 2024, Lecture Notes in Business Information Processing, vol 533. Springer, Cham. https://doi.org/10.1007/978-3-031-82225-4_19
 
-
-
-<!-- ### 3. **Extended Training and Inference Modules**
-
-Compared to the [SuffixTransformerNetwork](https://github.com/BrechtWts/SuffixTransformerNetwork/tree/main) repository,  main training functions pertaining to the different implementations have be -->
+[2] Wuyts, B., Vanden Broucke, S., & De Weerdt, J. (2024, October). SuTraN: an Encoder-Decoder Transformer for Full-Context-Aware Suffix Prediction of Business Processes. In 2024 6th International Conference on Process Mining (ICPM) (pp. 17-24). IEEE. https://doi.org/10.1109/ICPM63005.2024.10680671
